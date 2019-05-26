@@ -11,5 +11,8 @@ class EditFieldsTest extends GebReportingSpec
         def loginPage = browser.to LoginPage
 
         def dashboardPage = loginPage.login(CommonConfig.user, CommonConfig.password)
+        
+        then:
+        true
     }
 }
