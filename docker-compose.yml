@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   bamboo:
-    image: ghcr.io/StellaritySoftware/atlassian-sdk
+    image: ghcr.io/stellaritysoftware/atlassian-sdk
     ports:
       - "6990:6990"
     volumes:
@@ -22,7 +22,7 @@ services:
         aliases:
           - bamboo
   webtest:
-    image: ghcr.io/StellaritySoftware/webtest
+    image: ghcr.io/stellaritysoftware/webtest
     volumes:
       - ~/.m2:/root/.m2
       - ~/.gradle/caches/modules-2:/root/.gradle/caches/modules-2
