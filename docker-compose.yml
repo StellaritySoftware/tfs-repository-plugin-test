@@ -1,18 +1,18 @@
 version: '3.6'
 services:
   bamboo:
-    image: stellarity/atlassian-sdk
+    image: ghcr.io/StellaritySoftware/atlassian-sdk
     ports:
       - "6990:6990"
     volumes:
       - ~/.m2:/root/.m2
-      - ./bamboo:/opt/bamboo      
+      - ./bamboo:/opt/bamboo
       - ./plugin:/opt/plugin
       - ./bootstrap:/bootstrap
     command: /bootstrap/bamboo.sh
     stdin_open: true
     environment:
-      - BAMBOO_VERSION=${BAMBOO_VERSION-6.4.0}
+      - BAMBOO_VERSION=${BAMBOO_VERSION-8.0.0}
     ulimits:
       nofile:
         soft: 65536
@@ -22,13 +22,13 @@ services:
         aliases:
           - bamboo
   webtest:
-    image: stellarity/webtest
+    image: ghcr.io/StellaritySoftware/webtest
     volumes:
       - ~/.m2:/root/.m2
       - ~/.gradle/caches/modules-2:/root/.gradle/caches/modules-2
       - ~/.gradle/wrapper:/root/.gradle/wrapper
       - ./bamboo:/opt/bamboo
-      - ./bootstrap:/bootstrap      
+      - ./bootstrap:/bootstrap
       - ./test:/opt/test
     command: /bootstrap/webtest.sh
     environment:
